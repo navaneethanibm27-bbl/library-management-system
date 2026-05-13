@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Add Book | Library Hub{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <div>
+        <p class="text-muted">Add books with a joyful and professional feel.</p>
+        <h1>Bring new titles into your library collection.</h1>
+        <p>Enter the book details below and keep your inventory fresh, organized, and ready for readers.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="card form-card">
+    <form method="POST">
+        <div>
+            <label for="book_name">Book Name</label>
+            <input id="book_name" type="text" name="book_name" placeholder="Enter the book title" required>
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input id="author" type="text" name="author" placeholder="Enter the author name" required>
+        </div>
+        <div>
+            <label for="quantity">Quantity</label>
+            <input id="quantity" type="number" name="quantity" min="1" placeholder="Enter quantity" required>
+        </div>
+        <button class="button" type="submit">Add Book</button>
+    </form>
+</div>
+{% endblock %}

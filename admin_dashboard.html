@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard | Library Hub{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <div>
+        <p class="text-muted">Welcome back, {{ admin }} — manage your library with powerful tools.</p>
+        <h1>Admin Control Center</h1>
+        <p>Monitor inventory, add new books, track users, and oversee all library operations.</p>
+        <div class="actions">
+            <a class="button" href="/add_book">Add Book</a>
+            <a class="button" href="/logout">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 32px;">
+    <div class="card" style="display: grid; gap: 12px;">
+        <p class="text-muted" style="margin: 0;">Total Books in Library</p>
+        <div style="font-size: 2.4rem; font-weight: 800; color: var(--primary);">{{ books|length }}</div>
+    </div>
+    <div class="card" style="display: grid; gap: 12px;">
+        <p class="text-muted" style="margin: 0;">Books Issued</p>
+        <div style="font-size: 2.4rem; font-weight: 800; color: var(--primary);">{{ issued_count }}</div>
+    </div>
+    <div class="card" style="display: grid; gap: 12px;">
+        <p class="text-muted" style="margin: 0;">Active Users</p>
+        <div style="font-size: 2.4rem; font-weight: 800; color: var(--primary);">{{ user_count }}</div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Book Inventory</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.book_name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.quantity }}</td>
+            <td>
+                {% if book.quantity > 10 %}
+                    <span style="color: #10b981; font-weight: 700;">In Stock</span>
+                {% elif book.quantity > 0 %}
+                    <span style="color: #f59e0b; font-weight: 700;">Low Stock</span>
+                {% else %}
+                    <span style="color: #ef4444; font-weight: 700;">Out of Stock</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

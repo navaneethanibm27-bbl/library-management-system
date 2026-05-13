@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Choose Role | Library Hub{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <div>
+        <p class="text-muted">Welcome back — select your role to access the library system.</p>
+        <h1>Login to Library Hub</h1>
+        <p>Choose whether you are an administrator managing the library or a user issuing books.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto;">
+    <div class="card" style="display: grid; gap: 20px; text-align: center;">
+        <div style="font-size: 3rem; color: var(--primary);">👤</div>
+        <div>
+            <h2 style="margin: 0 0 10px 0;">User Login</h2>
+            <p class="text-muted" style="margin: 0 0 20px 0;">Access as a student or regular library user. Browse and issue books.</p>
+            <a class="button" href="/login/user" style="width: 100%; text-align: center;">Login as User</a>
+        </div>
+    </div>
+
+    <div class="card" style="display: grid; gap: 20px; text-align: center;">
+        <div style="font-size: 3rem; color: var(--primary);">🔐</div>
+        <div>
+            <h2 style="margin: 0 0 10px 0;">Admin Login</h2>
+            <p class="text-muted" style="margin: 0 0 20px 0;">Manage inventory, track books, and monitor users.</p>
+            <a class="button" href="/login/admin" style="width: 100%; text-align: center;">Login as Admin</a>
+        </div>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 32px;">
+    <p class="text-muted">New to Library Hub? <a href="/register" style="color: var(--primary); font-weight: 700;">Create an account</a></p>
+</div>
+{% endblock %}

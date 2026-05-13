@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Library Hub{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <div>
+        <p class="text-muted">Hello {{ user }}, welcome to your library control center.</p>
+        <h1>Track books and issue titles with ease.</h1>
+        <p>See your current inventory, add new books, or issue a copy to students in one smooth workflow.</p>
+        <div class="actions">
+            <a class="button" href="/add_book">Add Book</a>
+            <a class="button" href="/logout">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Available Books</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.book_name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.quantity }}</td>
+            <td><a href="/issue_book/{{ book.id }}">Issue Book</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

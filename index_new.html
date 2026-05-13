@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Library Hub{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <div>
+        <p class="text-muted">Welcome to a smarter way of managing books and readers.</p>
+        <h1>Build a brighter library experience today.</h1>
+        <p>Sign up to add new books, track inventory, and issue titles with confidence. Your library, modernized.</p>
+        <div class="actions">
+            <a class="button" href="/register">Create Account</a>
+            <a class="button" href="/login">Login</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="card panel-grid">
+    <div class="alert">
+        <strong>Fast setup.</strong> Register and start adding books in seconds.
+    </div>
+    <div>
+        <h2>Why Library Hub?</h2>
+        <p class="text-muted">A clean, engaging library system for students, staff, and book lovers. Track books by title, author, and quantity without the clutter.</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Login | Library Hub{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <div>
+        <p class="text-muted">Welcome back — let’s keep your library running smoothly.</p>
+        <h1>Login to manage books and issue titles.</h1>
+        <p>Access your dashboard, add new books, and keep inventory up to date with a single click.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="card form-card">
+    <form method="POST">
+        <div>
+            <label for="email">Email Address</label>
+            <input id="email" type="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button class="button" type="submit">Login</button>
+    </form>
+</div>
+{% endblock %}

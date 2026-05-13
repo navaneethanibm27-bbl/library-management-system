@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}User Dashboard | Library Hub{% endblock %}
+
+{% block hero %}
+<div class="hero">
+    <div>
+        <p class="text-muted">Hello {{ user }}, explore the library collection.</p>
+        <h1>Your Library Dashboard</h1>
+        <p>Browse available books, issue titles you need, and track what you've borrowed.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Available Books</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Available</th>
+            <th>Action</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.book_name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.quantity }}</td>
+            <td>
+                {% if book.quantity > 0 %}
+                    <a href="/issue_book/{{ book.id }}">Issue Book</a>
+                {% else %}
+                    <span class="text-muted">Out of stock</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="card" style="margin-top: 24px;">
+    <h2>Your Issued Books</h2>
+    {% if issued %}
+    <table>
+        <tr>
+            <th>Book Name</th>
+            <th>Issued Date</th>
+        </tr>
+        {% for item in issued %}
+        <tr>
+            <td>{{ item.book_name }}</td>
+            <td>Today</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p class="text-muted">No books issued yet. Browse available books and issue one!</p>
+    {% endif %}
+</div>
+{% endblock %}
